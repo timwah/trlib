@@ -1,0 +1,3 @@
+package com.timrobles.util {    import flash.display.DisplayObject;
+    import flash.geom.ColorTransform;    
+    /**     * @author timrobles     */    public class ColorUtil {    	    	public static function colorToRGB( value  : Number ) : Object {    	            return { r: value >> 16 & 0xFF, g : value >> 8 & 0xFF, b: value & 0xFF };            	    	}    	    	public static function setTint( clip : DisplayObject, value : Number ) : void {                var colorTransform : ColorTransform = clip.transform.colorTransform;            colorTransform.color = value;            clip.transform.colorTransform = colorTransform;                    }    	    }}

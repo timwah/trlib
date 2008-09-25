@@ -1,0 +1,1 @@
+package com.timrobles.ds {	/**	 * @author Tim Robles	 */	public interface ISortable {				function sort() : void;			}	}

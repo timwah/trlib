@@ -1,0 +1,1 @@
+package com.timrobles.loader {	/**	 * @author timrobles	 */	public interface ILoadQueue {				function add( job : ILoadJob, priority : uint = 0 ) : void;			}}

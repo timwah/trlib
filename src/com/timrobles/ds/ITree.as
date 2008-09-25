@@ -1,0 +1,1 @@
+package com.timrobles.ds {	/**	 * @author timrobles	 */	public interface ITree extends Collection {				}}

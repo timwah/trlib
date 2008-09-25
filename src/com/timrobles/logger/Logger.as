@@ -1,0 +1,1 @@
+package com.timrobles.logger {    import flash.external.ExternalInterface;    import flash.system.Capabilities;            /**     * @author timrobles     */    public class Logger {    	    	public static var target:ILoggerTarget = new ConsoleTarget();    	    	public static function log(msg:*):void     	{    	   	target.log(msg);    	}    	    }}

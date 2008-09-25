@@ -1,0 +1,1 @@
+package com.timrobles.util {	/**	 * @author timrobles	 */	public class ArrayUtil {				public static function swap( arr : Array, p1 : uint, p2 : uint ) : void {						var tmp : * = arr[ p1 ];			arr[ p1 ] = arr[ p2 ];			arr[ p2 ] = tmp;								}			}	}
