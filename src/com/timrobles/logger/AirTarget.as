@@ -1,7 +1,7 @@
 package com.timrobles.logger
 {
-	import flash.net.LocalConnection;
-	
+	import flash.net.LocalConnection;	
+
 	public class AirTarget implements ILoggerTarget
 	{
 		protected var connectionName:String;
@@ -10,9 +10,9 @@ package com.timrobles.logger
 		public function AirTarget(connectionName:String = "airDebugger")
 		{
 			lc = new LocalConnection();
+			this.connectionName = connectionName;
 		}
-		
-		public function execute(msg:*, level:String = "log"):void
+		public function log(msg:*, level:String = "log"):void
 		{
 			lc.send(connectionName, "execute", msg);
 		}
