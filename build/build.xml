@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="timrobles.com" default="tests-standalone" basedir="../">
+	
+    <property file="build/build.properties" />
+	
+    <target name="properties">
+        <fail unless="flexsdk">The flexsdk property must be set in build/build.properties</fail>
+    	<property name="mxmlc" value="${flexsdk}/bin/mxmlc" />
+    </target>
+	
+	<property name="mxmlc.test.args" value="tests/trdotcomTestRunner.mxml -sp src -library-path+=${flexunit} -o bintest/trdotcomTestRunner.swf -default-size 1000 600" />
+    <target name="compile-tests" depends="properties">
+        <exec executable="${mxmlc}" failonerror="true">
+            <arg line="${mxmlc.test.args}" />
+        </exec>
+    </target>
+	<target name="tests-standalone" depends="compile-tests">
+		<exec executable="open">
+			<arg line="bintest/trdotcomTestRunner.swf" />
+		</exec>
+	</target>
+	
+</project>
