@@ -1,11 +1,12 @@
 package com.timrobles.models.feeds.parsers 
 {
-	import com.timrobles.models.feeds.FeedItem;						
+	import com.timrobles.models.feeds.FeedItem;											
 
 	/**	 * @author Tim Robles	 */	public class RSSParser implements IParser 
 	{		public function parse(value:XML):Array
 		{
 			var arr:Array = [];
+			//var dcNS:Namespace = new Namespace()
 			for each (var item:XML in value..item)
 			{
 				arr.push(new FeedItem(
@@ -21,6 +22,6 @@ package com.timrobles.models.feeds.parsers
 		
 		public function getDate(value:String):Date
 		{
-			return null;
+			return value ? new Date(Date.parse(value.split("T")[0])) : null;
 		}
 	}}
