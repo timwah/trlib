@@ -1,27 +1,70 @@
 package com.timrobles.models.feeds.parsers 
 {
-	import com.timrobles.models.feeds.FeedItem;											
+	import com.timrobles.models.feeds.FeedItem;																																																										
 
-	/**	 * @author Tim Robles	 */	public class RSSParser implements IParser 
-	{		public function parse(value:XML):Array
+	/**	 * @author Tim Robles	 */	public class RSSParser implements IFeedParser 
+	{
+		//--------------------------------------------------------------------------
+		//
+		//  Constructor
+		//
+		//--------------------------------------------------------------------------
+		
+		public function RSSParser() 
+		{
+			
+		}
+		
+		//--------------------------------------------------------------------------
+		//
+		//  Public Methods
+		//
+		//--------------------------------------------------------------------------
+						public function parse(value:XML):Array
 		{
 			var arr:Array = [];
-			//var dcNS:Namespace = new Namespace()
+			var dc:Namespace = value.namespace("dc");
 			for each (var item:XML in value..item)
 			{
 				arr.push(new FeedItem(
 					item.title.text(),
 					item.description.text(),
-					new Date(),
-					null,
-					null
+					getDate(item.dc::date.text()),
+					getCategories(item),
+					getMedia(item)
 				));
 			}
 			return arr;
 		}
 		
-		public function getDate(value:String):Date
+		//--------------------------------------------------------------------------
+		//
+		//  Protected Methods
+		//
+		//--------------------------------------------------------------------------
+		
+		protected function getDate(value:String):Date
 		{
-			return value ? new Date(Date.parse(value.split("T")[0])) : null;
+			if (!value)
+				return null;
+			
+			var formatted:String = value.split("T")[0];
+			formatted = formatted.replace(/\-/g, "/");
+			return new Date(Date.parse(formatted));
 		}
+		
+		protected function getCategories(item:XML):Array
+		{
+			var categories:Array = [];
+			for each (var category:XML in item..category)
+				categories.push(category.text());
+			return categories;
+		}
+		
+		protected function getMedia(item:XML):Array
+		{
+			var media:Array = [];
+			return media;
+		}
+		
 	}}
