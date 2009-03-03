@@ -1,11 +1,11 @@
 package com.timrobles.models.navigation 
 {
+	import flash.events.Event;
+	import flash.events.EventDispatcher;
+	
 	import com.asual.swfaddress.SWFAddress;
 	import com.asual.swfaddress.SWFAddressEvent;
-	import com.graphikboutique.model.IContentModel;
-	
-	import flash.events.Event;
-	import flash.events.EventDispatcher;	
+	import com.graphikboutique.model.Sitemap;	
 
 	/**	 * @author Tim Robles	 */	public class SWFAddressProxy extends EventDispatcher implements INavigationProxy
 	{
@@ -19,7 +19,7 @@ package com.timrobles.models.navigation
 		//  Protected Members
 		//----------------------------------
 
-		protected var contentModel:IContentModel;		
+		protected var sitemap:Sitemap;		
 		protected var values:Array;
 		
 		//--------------------------------------------------------------------------
@@ -28,9 +28,9 @@ package com.timrobles.models.navigation
 		//
 		//--------------------------------------------------------------------------
 		
-		public function SWFAddressProxy(contentModel:IContentModel = null) 
+		public function SWFAddressProxy(sitemap:Sitemap = null) 
 		{
-			this.contentModel = contentModel;
+			this.sitemap = sitemap;
 			init();
 		}
 		
@@ -73,9 +73,9 @@ package com.timrobles.models.navigation
 			
 			var value:String = SWFAddress.getValue();
 			values = value.split(SEPARATOR);
-			if (contentModel)
+			if (sitemap)
 			{
-				SWFAddress.setTitle(contentModel.getTitle(value, SEPARATOR));
+				SWFAddress.setTitle(sitemap.generateTitle(value, SEPARATOR));
 			}
 			dispatchEvent(new Event(Event.CHANGE));
 		}

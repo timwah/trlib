@@ -1,6 +1,6 @@
 package com.timrobles.ds 
 {
-	import flash.utils.Dictionary;												
+	import flash.utils.Dictionary;																				
 
 	/**	 * @author Tim Robles	 */	public class Tree 
 	{
@@ -37,8 +37,15 @@ package com.timrobles.ds
 			return leaves[id];
 		}
 		
-		public function getDescendantsByID(id:String):void
+		public function getDescendantsByID(id:String):Array
 		{
+			var result:Array = [];
+			for each (var node:TreeNode in leaves)
+			{
+				if (node.parent == id)
+					result.push(node);
+			}
+			return result;
 		}
 		
 		//--------------------------------------------------------------------------
