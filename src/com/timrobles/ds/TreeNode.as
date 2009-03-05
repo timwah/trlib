@@ -9,6 +9,7 @@ package com.timrobles.ds
 		private var _id:String;
 		private var _data:*;
 		private var _parent:String;
+		private var _children:Array;
 		
 		//--------------------------------------------------------------------------
 		//
@@ -20,7 +21,8 @@ package com.timrobles.ds
 		{
 			_id = id;
 			_data = data;
-			_parent = parent;	
+			_parent = parent;
+			_children = [];	
 		}
 		
 		//--------------------------------------------------------------------------
@@ -42,5 +44,15 @@ package com.timrobles.ds
 		public function get parent():String
 		{
 			return _parent;
+		}
+		
+		public function addChild(id:String):void
+		{
+			_children.push(id);
+		}
+		
+		public function get children():Array
+		{
+			return _children;
 		}
 					}}

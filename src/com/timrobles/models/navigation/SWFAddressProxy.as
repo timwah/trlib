@@ -1,13 +1,13 @@
 package com.timrobles.models.navigation 
 {
-	import flash.events.Event;
-	import flash.events.EventDispatcher;
-	
-	import com.asual.swfaddress.SWFAddress;
-	import com.asual.swfaddress.SWFAddressEvent;
-	import com.graphikboutique.model.Sitemap;	
+    import flash.events.Event;
+    import flash.events.EventDispatcher;
+    
+    import com.asual.swfaddress.SWFAddress;
+    import com.asual.swfaddress.SWFAddressEvent;
+    import com.graphikboutique.model.Sitemap;    
 
-	/**	 * @author Tim Robles	 */	public class SWFAddressProxy extends EventDispatcher implements INavigationProxy
+    /**	 * @author Tim Robles	 */	public class SWFAddressProxy extends EventDispatcher implements INavigationProxy
 	{
 		//----------------------------------
 		//  Constants
