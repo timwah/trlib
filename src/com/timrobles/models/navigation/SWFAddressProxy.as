@@ -42,7 +42,7 @@ package com.timrobles.models.navigation
 		
 		public function getValue():String
 		{
-			return values.join(SEPARATOR);
+			return SWFAddress.getValue();
 		}
 		
 		public function getValues():Array
@@ -73,6 +73,8 @@ package com.timrobles.models.navigation
 			
 			var value:String = SWFAddress.getValue();
 			values = value.split(SEPARATOR);
+			if ((values[0] == null) || (String(values[0]).length < 1))
+				values.splice(0, 1);
 			if (sitemap)
 			{
 				SWFAddress.setTitle(sitemap.generateTitle(value, SEPARATOR));

@@ -52,4 +52,18 @@ package com.timrobles.models.feeds
 		public function get media():Array
 		{
 			return _media;
+		}
+		
+		public function hasCategory(id:String):Boolean
+		{
+			var result:Boolean = false;
+			for each (var category:String in _categories)
+			{
+				if (category == id)
+				{
+					result = true;
+					break;
+				}
+			}
+			return result;
 		}	}}

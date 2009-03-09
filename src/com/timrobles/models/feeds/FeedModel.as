@@ -1,7 +1,7 @@
 package com.timrobles.models.feeds 
 {
 
-	/**	 * @author Tim Robles	 */	public class FeedModel
+     /**     * @author Tim Robles	 */	public class FeedModel
 	{
 		//----------------------------------
 		//  Private Members
@@ -20,7 +20,7 @@ package com.timrobles.models.feeds
 			
 		}
 		
-		public function inject(items:Array):void
+		public function initialize(items:Array):void
 		{
 			this.items = items;
 		}
@@ -28,10 +28,10 @@ package com.timrobles.models.feeds
 		public function getItemsByCategory(id:String):Array
 		{
 			var result:Array = [];
-			for each (var item:FeedItem in items)
+			for each (var feedItem:FeedItem in items)
 			{
-				if (item.categories.indexOf(id) > -1)
-					result.push(item);
+				if (feedItem.hasCategory(id))
+					result.push(feedItem);
 			}
 			return result;
 		}
