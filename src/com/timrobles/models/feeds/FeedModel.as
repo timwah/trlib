@@ -1,7 +1,7 @@
 package com.timrobles.models.feeds 
 {
-
-     /**     * @author Tim Robles	 */	public class FeedModel
+    import com.timrobles.models.feeds.dto.FeedItem;	
+    /**     * @author Tim Robles	 */	public class FeedModel
 	{
 		//----------------------------------
 		//  Private Members
@@ -20,9 +20,20 @@ package com.timrobles.models.feeds
 			
 		}
 		
+		//--------------------------------------------------------------------------
+		//
+		//  Public Methods
+		//
+		//--------------------------------------------------------------------------
+			
 		public function initialize(items:Array):void
 		{
 			this.items = items;
+		}
+		
+		public function getItems():Array
+		{
+			return items;
 		}
 
 		public function getItemsByCategory(id:String):Array

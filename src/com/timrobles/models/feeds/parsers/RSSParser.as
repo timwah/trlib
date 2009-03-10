@@ -1,9 +1,14 @@
 package com.timrobles.models.feeds.parsers 
 {
-	import com.timrobles.models.feeds.FeedItem;																																																										
-
-	/**	 * @author Tim Robles	 */	public class RSSParser implements IFeedParser 
+    import com.timrobles.models.feeds.dto.FeedItem;    import com.timrobles.models.feeds.dto.MediaRSSItem;    import com.timrobles.models.feeds.dto.MediaType;    
+    /**	 * @author Tim Robles	 */	public class RSSParser implements IFeedParser 
 	{
+		//----------------------------------
+		//  Private Members
+		//----------------------------------
+		
+		private var media:Namespace;
+		
 		//--------------------------------------------------------------------------
 		//
 		//  Constructor
@@ -24,6 +29,7 @@ package com.timrobles.models.feeds.parsers
 		{
 			var arr:Array = [];
 			var dc:Namespace = value.namespace("dc");
+			media = value.namespace("media");
 			for each (var item:XML in value..item)
 			{
 				arr.push(new FeedItem(
@@ -31,7 +37,8 @@ package com.timrobles.models.feeds.parsers
 					item.description.text(),
 					getDate(item.dc::date.text()),
 					getCategories(item),
-					getMedia(item)
+					getMedia(item),
+					getThumbnail(item)
 				));
 			}
 			return arr;
@@ -63,8 +70,28 @@ package com.timrobles.models.feeds.parsers
 		
 		protected function getMedia(item:XML):Array
 		{
-			var media:Array = [];
-			return media;
+			var result:Array = [];
+			for each (var mediaItem:XML in item.media::content)
+			{
+				result.push(createMediaRSSItem(mediaItem));
+			}
+			return result;
+		}
+		
+		protected function getThumbnail(item:XML):MediaRSSItem
+		{
+			var mediaXML:XML = item.media::thumbnail[0];
+			var thumbnail:MediaRSSItem = null;
+			if (mediaXML)
+			{
+				thumbnail = createMediaRSSItem(mediaXML);
+			}
+			return thumbnail;
+		}
+		
+		protected function createMediaRSSItem(mediaItem:XML):MediaRSSItem
+		{
+			return new MediaRSSItem(mediaItem.@url, MediaType.create(mediaItem.@type), 0, String(mediaItem.@isDefault) == "true" ? true : false); 
 		}
 		
 	}}

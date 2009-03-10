@@ -1,6 +1,6 @@
-package com.timrobles.models.feeds 
+package com.timrobles.models.feeds.dto 
 {
-	/**	 * @author Tim Robles	 */	public class FeedItem 
+    import com.timrobles.logger.Logger;	        /**     * @author Tim Robles	 */	public class FeedItem 
 	{
 		//----------------------------------
 		//  Private Members
@@ -11,6 +11,7 @@ package com.timrobles.models.feeds
 		private var _date:Date;
 		private var _categories:Array;
 		private var _media:Array;
+		private var _thumbnail:MediaRSSItem;
 		
 		//--------------------------------------------------------------------------
 		//
@@ -18,13 +19,15 @@ package com.timrobles.models.feeds
 		//
 		//--------------------------------------------------------------------------
 		
-		public function FeedItem(title:String, description:String, date:Date, categories:Array, media:Array) 
+		public function FeedItem(title:String, description:String, date:Date, categories:Array, media:Array,
+								 thumbnail:MediaRSSItem = null) 
 		{
 			_title = title;
 			_description = description;
 			_date = date;
 			_categories = categories;
 			_media = media;
+			_thumbnail = thumbnail;
 		}
 		
 		//--------------------------------------------------------------------------
@@ -52,6 +55,11 @@ package com.timrobles.models.feeds
 		public function get media():Array
 		{
 			return _media;
+		}
+		
+		public function get thumbnail():MediaRSSItem
+		{
+			return _thumbnail;
 		}
 		
 		public function hasCategory(id:String):Boolean
