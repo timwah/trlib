@@ -1,6 +1,6 @@
 package com.timrobles.ds 
 {
-    import flash.utils.Dictionary;        /**	 * @author Tim Robles	 */	public class Tree implements Collection
+    import flash.utils.Dictionary;                                            /**	 * @author Tim Robles	 */	public class Tree implements Collection
 	{
 		//----------------------------------
 		//  Constants
@@ -80,6 +80,14 @@ package com.timrobles.ds
         		}
         	}
         	return result;
+        }
+        
+        public function clone():*
+        {
+        	var tree:Tree = new Tree();
+        	for each (var treeNode:TreeNode in leaves)
+        		tree.addNode(treeNode);
+        	return tree;
         }
         
         public function get iterator():Iterator
