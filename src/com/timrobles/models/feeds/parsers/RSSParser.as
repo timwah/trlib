@@ -1,7 +1,11 @@
 package com.timrobles.models.feeds.parsers 
 {
-    import com.timrobles.models.feeds.dto.FeedItem;    import com.timrobles.models.feeds.dto.MediaRSSItem;    import com.timrobles.models.feeds.dto.MediaType;    
-    /**	 * @author Tim Robles	 */	public class RSSParser implements IFeedParser 
+    import com.timrobles.logger.Logger;
+    import com.timrobles.models.feeds.dto.FeedItem;
+    import com.timrobles.models.feeds.dto.MediaRSSItem;
+    import com.timrobles.models.feeds.dto.MediaType;    
+
+    /**	 * @author Tim Robles	 */	public class RSSParser implements IFeedParser 
 	{
 		//----------------------------------
 		//  Private Members

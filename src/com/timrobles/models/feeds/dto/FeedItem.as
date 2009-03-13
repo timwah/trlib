@@ -1,6 +1,6 @@
 package com.timrobles.models.feeds.dto 
 {
-    import com.timrobles.logger.Logger;	        /**     * @author Tim Robles	 */	public class FeedItem 
+    /**     * @author Tim Robles	 */	public class FeedItem 
 	{
 		//----------------------------------
 		//  Private Members
@@ -74,4 +74,18 @@ package com.timrobles.models.feeds.dto
 				}
 			}
 			return result;
+		}
+		
+		public function getDefaultMedia():MediaRSSItem
+		{
+			var defaultItem:MediaRSSItem = null;
+			for each (var mediaItem:MediaRSSItem in _media)
+			{
+				if (mediaItem.isDefault())
+				{
+					defaultItem = mediaItem;
+					break;
+				}
+			}
+			return defaultItem;
 		}	}}
