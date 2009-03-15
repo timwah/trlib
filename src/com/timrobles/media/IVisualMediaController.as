@@ -1,0 +1,1 @@
+package com.timrobles.media {    import com.timrobles.media.model.IVisualMediaModel;                            /**     * @author Tim Robles     */    public interface IVisualMediaController extends IVisualMediaModel    {    }}
