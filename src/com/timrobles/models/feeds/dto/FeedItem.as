@@ -1,6 +1,7 @@
 package com.timrobles.models.feeds.dto 
 {
-    /**     * @author Tim Robles	 */	public class FeedItem 
+    import flash.utils.getQualifiedClassName;                                        
+    /**     * @author Tim Robles	 */	public class FeedItem 
 	{
 		//----------------------------------
 		//  Private Members
@@ -88,4 +89,11 @@ package com.timrobles.models.feeds.dto
 				}
 			}
 			return defaultItem;
+		}
+		
+		public function toString():String
+		{
+			return getQualifiedClassName(this).split("::")[1] + 
+				   ":\n{title: " + title + "\ndescription: " + description + 
+				   "\nmedia: " + media + "}";
 		}	}}

@@ -1,6 +1,5 @@
 package com.timrobles.models.feeds.parsers 
 {
-    import com.timrobles.logger.Logger;
     import com.timrobles.models.feeds.dto.FeedItem;
     import com.timrobles.models.feeds.dto.MediaRSSItem;
     import com.timrobles.models.feeds.dto.MediaType;    
@@ -95,7 +94,10 @@ package com.timrobles.models.feeds.parsers
 		
 		protected function createMediaRSSItem(mediaItem:XML):MediaRSSItem
 		{
-			return new MediaRSSItem(mediaItem.@url, MediaType.create(mediaItem.@type), 0, String(mediaItem.@isDefault) == "true" ? true : false); 
+			return new MediaRSSItem(mediaItem.@url, 
+									MediaType.create(mediaItem.@type), 0, 
+									String(mediaItem.@isDefault) == "true" ? true : false,
+									mediaItem.media::thumbnail[0] ? createMediaRSSItem(mediaItem.media::thumbnail[0]) : null); 
 		}
 		
 	}}

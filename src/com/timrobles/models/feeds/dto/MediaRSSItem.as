@@ -1,11 +1,14 @@
 package com.timrobles.models.feeds.dto 
 {
-	/**	 * @author Tim Robles	 */	public class MediaRSSItem 
+    import flash.utils.getQualifiedClassName;    	
+
+    /**     * @author Tim Robles	 */	public class MediaRSSItem 
 	{
 		private var _isDefault:Boolean;
 		private var _url:String;
 		private var _type:MediaType;
 		private var _length:int;
+		private var _thumbnail:MediaRSSItem;
 
 		//--------------------------------------------------------------------------
 		//
@@ -13,12 +16,13 @@ package com.timrobles.models.feeds.dto
 		//
 		//--------------------------------------------------------------------------
 		
-		public function MediaRSSItem(url:String, type:MediaType, length:int = 0, isDefault:Boolean = false) 
+		public function MediaRSSItem(url:String, type:MediaType, length:int = 0, isDefault:Boolean = false, thumbnail:MediaRSSItem = null) 
 		{
 			_url = url;
 			_length = length;
 			_type = type;
 			_isDefault = isDefault;
+			_thumbnail = thumbnail;
 		}
 		
 		//--------------------------------------------------------------------------
@@ -47,7 +51,14 @@ package com.timrobles.models.feeds.dto
 			return _isDefault;
 		}
 		
+		public function get thumbnail():MediaRSSItem
+		{
+			return _thumbnail;
+		}
+		
 		public function toString():String
 		{
-			return "MediaRSSItem:\n{url: " + url +",\ntype: " + type + ",\nlength: " + length + ",\nisDefault: " + isDefault() + "\n}\n";
+			return getQualifiedClassName(this).split("::")[1] + 
+				   ":\n{url: " + url +",\ntype: " + type + ",\nlength: " + length + 
+				   ",\nisDefault: " + isDefault() + ",\nthumbnail: " + thumbnail + "}\n";
 		}	}}
