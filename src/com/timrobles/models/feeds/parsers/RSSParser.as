@@ -97,7 +97,8 @@ package com.timrobles.models.feeds.parsers
 			return new MediaRSSItem(mediaItem.@url, 
 									MediaType.create(mediaItem.@type), 0, 
 									String(mediaItem.@isDefault) == "true" ? true : false,
-									mediaItem.media::thumbnail[0] ? createMediaRSSItem(mediaItem.media::thumbnail[0]) : null); 
+									mediaItem.media::thumbnail[0] ? createMediaRSSItem(mediaItem.media::thumbnail[0]) : null,
+									parseFloat(mediaItem.@width), parseFloat(mediaItem.@height)); 
 		}
 		
 	}}
