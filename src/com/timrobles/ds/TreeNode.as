@@ -46,9 +46,9 @@ package com.timrobles.ds
 			return _parent;
 		}
 		
-		public function addChild(id:String):void
+		public function addChild(treeNode:TreeNode):void
 		{
-			_children.push(id);
+			_children.push(treeNode);
 		}
 		
 		public function get children():Array

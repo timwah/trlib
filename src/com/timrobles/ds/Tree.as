@@ -1,6 +1,6 @@
 package com.timrobles.ds 
 {
-    import flash.utils.Dictionary;                                            /**	 * @author Tim Robles	 */	public class Tree implements Collection
+    import flash.utils.Dictionary;                                                /**	 * @author Tim Robles	 */	public class Tree implements Collection
 	{
 		//----------------------------------
 		//  Constants
@@ -36,7 +36,7 @@ package com.timrobles.ds
 			leaves[treeNode.id] = treeNode;
 			var parent:TreeNode = leaves[treeNode.parent];
 			if (parent)
-				parent.addChild(treeNode.id);
+				parent.addChild(treeNode);
 		}
 		
 		public function getNode(id:String):TreeNode
