@@ -1,0 +1,1 @@
+package com.timrobles.net.env {    /**     * @author Tim Robles     */    public class Environment     {    	public static const DEV:String = "dev";    	public static const STAGING:String = "staging";    	public static const PRODUCTION:String = "production";    }}

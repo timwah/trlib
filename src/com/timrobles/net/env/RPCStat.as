@@ -1,0 +1,1 @@
+package com.timrobles.net.env {    /**     * @author Tim Robles     */    public class RPCStat     {    	//----------------------------------    	//  Constants    	//----------------------------------    	    	public static const OK:String = "ok";    }}
