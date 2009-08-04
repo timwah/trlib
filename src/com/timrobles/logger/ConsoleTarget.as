@@ -1,9 +1,9 @@
 package com.timrobles.logger
 {
-	import flash.external.ExternalInterface;
-	import flash.system.Capabilities;	
+    import flash.external.ExternalInterface;
+    import flash.system.Capabilities;    
 
-	public class ConsoleTarget implements ILoggerTarget
+    public class ConsoleTarget implements ILoggerTarget
 	{
 		public function ConsoleTarget()
 		{
