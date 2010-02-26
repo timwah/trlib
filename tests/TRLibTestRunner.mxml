@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+				creationComplete="onCreationComplete()" 
+				xmlns:adobe="http://www.adobe.com/2009/flexUnitUIRunner"
+				width="1000"
+				height="700">
+    <mx:Script><![CDATA[
+        
+            import org.flexunit.listeners.UIListener;
+			import org.flexunit.runner.FlexUnitCore;
+			            
+            private var core:FlexUnitCore;
+            
+            private function onCreationComplete():void
+            {
+            	core = new FlexUnitCore();
+            	core.addListener(new UIListener(uiListener));
+            	core.run(TRLibTestSuite);
+            }
+            
+        ]]></mx:Script>
+    <adobe:TestRunnerBase id="uiListener" width="100%" height="100%" />
+</mx:Application>
